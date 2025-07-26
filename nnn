@@ -1,46 +1,21 @@
-git add .
-
-git commit -m "Add website files: index.html, copy.html, copyall.html, style.css, heart.jpg"
-
-
-git push origin main
+git commit -m "Clean up: remove wrong files and add correct structure"
 
 
 ---
 
-🔍 Check
+4️⃣ Vercel will auto-redeploy
 
-Go to: https://github.com/babikerosman468/Hearthub
-✔️ You’ll see your HTML, CSS, and image files there.
+As soon as you push to GitHub, Vercel automatically redeploys with the updated files.
 
+Wait a few seconds → refresh https://babsapp.vercel.app/ → you’ll see the correct files.
 
----
-
-✅ Tip — Keep your IP safe
-
-These files are fine for public:
-
-✅ HTML, CSS → OK
-
-✅ Images → OK
-
-✅ README, LICENSE → OK
-
-
-Just don’t push your private Android code here!
 
 
 ---
 
-If you’d like, I can help you:
+✅ Bonus:
+If you want to double-check, give me your repo link and I’ll check the file tree live with you.
 
-Create a simple index.html structure,
-
-Add a Python backend folder,
-
-Or guide you to make it a website with GitHub Pages!
-
-
-👉 Just say: “Next step — website!” or “Next step — Python!” 🚀
+Want to do it now together? Just say “Yes, let’s fix it together!” and I’ll guide every command 🚀
 
 
