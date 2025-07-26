@@ -1,0 +1,46 @@
+git add .
+
+git commit -m "Add website files: index.html, copy.html, copyall.html, style.css, heart.jpg"
+
+
+git push origin main
+
+
+---
+
+🔍 Check
+
+Go to: https://github.com/babikerosman468/Hearthub
+✔️ You’ll see your HTML, CSS, and image files there.
+
+
+---
+
+✅ Tip — Keep your IP safe
+
+These files are fine for public:
+
+✅ HTML, CSS → OK
+
+✅ Images → OK
+
+✅ README, LICENSE → OK
+
+
+Just don’t push your private Android code here!
+
+
+---
+
+If you’d like, I can help you:
+
+Create a simple index.html structure,
+
+Add a Python backend folder,
+
+Or guide you to make it a website with GitHub Pages!
+
+
+👉 Just say: “Next step — website!” or “Next step — Python!” 🚀
+
+

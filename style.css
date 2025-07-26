@@ -1,0 +1,169 @@
+/* === Base Body === */
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #e1f5fe);
+  color: #333;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* === Header === */
+header {
+  padding: 2rem 1rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+header .logo {
+  height: 80px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+header h1 {
+  margin: 1rem 0 0.5rem;
+}
+
+header p {
+  color: #555;
+}
+
+header .status {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* === Cards === */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.card {
+  display: block;
+  background: #fff;
+  padding: 2rem;
+  width: 200px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.card::after {
+  content: '➜';
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  font-size: 1.2rem;
+  color: #999;
+  transition: transform 0.2s;
+}
+
+.card:hover::after {
+  transform: translateX(5px);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+/* === Footer === */
+footer {
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1rem 1rem;
+  background: #fff;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+footer .wave {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 200%;
+  height: 40px;
+  background: linear-gradient(90deg, #81d4fa 50%, transparent 50%);
+  background-size: 50px 100%;
+  animation: wave 4s linear infinite;
+}
+
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50px); }
+}
+
+/* === Mobile === */
+@media (max-width: 600px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* === Connected Apps Block === */
+
+#connectedAppsSection {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+#toggleAppsBtn {
+  background-color: #007acc;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#toggleAppsBtn:hover {
+  background-color: #005fa3;
+}
+
+.connected-apps {
+  margin-top: 1rem;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  display: inline-block;
+}
+
+.app-link {
+  display: inline-block;
+  margin: 0.5rem 1rem;
+  text-decoration: none;
+  color: #007acc;
+  font-weight: bold;
+}
+
+.app-link:hover {
+  text-decoration: underline;
+}
+
+
