@@ -1,9 +1,10 @@
+
 #!/bin/bash
 # deploy_full.sh - Full automated deployment to GitHub + Vercel (Termux-ready)
 
 # Variables
 COMMIT_MSG="Auto-update $(date '+%Y-%m-%d %H:%M:%S')"
-VERCEL_CMD="vercel --prod --confirm"
+VERCEL_CMD="vercel --prod --confirm --force"
 
 echo "🚀 Starting full deployment..."
 
@@ -47,3 +48,4 @@ else
 fi
 
 echo "🎉 Full deployment with nested projects finished!"
+
