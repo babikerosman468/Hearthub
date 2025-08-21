@@ -1,7 +1,5 @@
-
-
 #!/bin/bash
-# deploy_full.sh - Full automated deployment to GitHub + Vercel
+# deploy_full.sh - Full automated deployment to GitHub + Vercel (Termux-ready)
 
 # Variables
 COMMIT_MSG="Auto-update $(date '+%Y-%m-%d %H:%M:%S')"
@@ -37,13 +35,13 @@ echo "✅ Pushed to GitHub."
 echo "🌐 Deploying to Vercel production..."
 DEPLOY_OUTPUT=$($VERCEL_CMD 2>&1)
 
-# Extract deployed URL from output
-DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'https://[^ ]*vercel.app')
+# Extract deployed URL robustly
+DEPLOY_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'https://[a-zA-Z0-9.-]*vercel.app' | head -n1)
 
 if [ -n "$DEPLOY_URL" ]; then
     echo "✅ Deployed: $DEPLOY_URL"
-    # Step 6: Open in default browser
-    xdg-open "$DEPLOY_URL" 2>/dev/null || echo "🌟 Open your browser and visit: $DEPLOY_URL"
+    # Open in Termux browser
+    termux-open "$DEPLOY_URL" 2>/dev/null || echo "🌟 Open your browser and visit: $DEPLOY_URL"
 else
     echo "⚠️ Deployment finished but URL not found."
 fi
