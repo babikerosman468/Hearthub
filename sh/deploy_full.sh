@@ -1,12 +1,22 @@
-
 #!/bin/bash
-# deploy_full.sh - Full automated deployment to GitHub + Vercel (Termux-ready)
+# deploy_full.sh - Termux-ready full deployment for linked Vercel project
 
 # Variables
 COMMIT_MSG="Auto-update $(date '+%Y-%m-%d %H:%M:%S')"
-VERCEL_CMD="vercel --prod --confirm --force"
+VERCEL_CMD="vercel --prod --confirm"
 
 echo "🚀 Starting full deployment..."
+
+# Step 0: Check if project is linked
+if [ ! -d ".vercel" ]; then
+    echo "⚠️ Vercel project not linked. Linking now..."
+    vercel link --yes
+    if [ ! -d ".vercel" ]; then
+        echo "❌ Failed to link Vercel project. Aborting."
+        exit 1
+    fi
+    echo "✅ Project linked successfully."
+fi
 
 # Step 1: Copy src/ files to public/
 echo "📂 Copying src/ files into public/..."
@@ -15,7 +25,7 @@ cp -r ../src/* ../public/
 # Step 2: Inject multi-search script (if applicable)
 if [ -f "../src/script.js" ]; then
     echo "📝 Injecting multi-search script..."
-    # Example injection (customize as needed)
+    # Customize injection if needed
     # sed -i '/<\/body>/i <script src="multi-search.js"></script>' ../public/index.html
     echo "✅ Multi-search script injected."
 fi
@@ -47,5 +57,5 @@ else
     echo "⚠️ Deployment finished but URL not found."
 fi
 
-echo "🎉 Full deployment with nested projects finished!"
+echo "🎉 Full deployment finished!"
 
