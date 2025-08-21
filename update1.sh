@@ -1,3 +1,12 @@
+
+#!/bin/bash
+# update1.sh - Update and deploy site with dashboard search
+
+echo ">>> Renaming copy.html to dashboard.html..."
+mv -f copy.html dashboard.html
+
+echo ">>> Patching dashboard.html with multiple search filter..."
+cat > dashboard.html <<'EOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,3 +65,12 @@
   </script>
 </body>
 </html>
+EOF
+
+echo ">>> Deploying to git..."
+git add .
+git commit -m "Update dashboard with combined multiple search"
+git push origin main
+
+echo ">>> Deployment complete!"
+
