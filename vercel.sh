@@ -1,6 +1,6 @@
 
 #!/bin/bash
-# vercel_update.sh - Termux-ready update + redeploy to Vercel
+# vercel_update.sh - Termux-ready update + redeploy + verify live URLs
 
 echo ">>> Checking required files..."
 FILES=("index.html" "dashboard.html" "vision_mission.html" "contact.html")
@@ -19,8 +19,21 @@ git commit -m "Update: ensure dashboard.html and links"
 git push origin main
 
 echo ">>> Deploying to Vercel..."
-# Make sure you have Vercel CLI installed: npm i -g vercel
 vercel --prod --confirm
 
-echo ">>> Deployment complete! Check your live site."
+# Verification
+SITE_URL="https://hearthub.vercel.app"
+PAGES=("index.html" "dashboard.html" "vision_mission.html" "contact.html")
+
+echo ">>> Verifying deployed pages..."
+for page in "${PAGES[@]}"; do
+  STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL/$page")
+  if [ "$STATUS" -eq 200 ]; then
+    echo "✅ $page is live!"
+  else
+    echo "❌ $page returned HTTP $STATUS"
+  fi
+done
+
+echo ">>> Deployment + verification complete!"
 
