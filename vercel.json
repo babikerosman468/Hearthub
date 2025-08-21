@@ -1,15 +1,49 @@
+
 {
   "version": 2,
   "builds": [
     {
-      "src": "src/index.html",
+      "src": "public/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/dashboard.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/contact.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/vision_mission.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/index1.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/index3.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/js/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/css/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/images/*",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/components/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/src/index.html"
-    }
+    { "src": "/(.*)", "dest": "/public/index.html" }
   ]
 }
