@@ -1,6 +1,6 @@
 
 #!/bin/bash
-# vercel_update.sh - Termux-ready update + deploy + verify + open live pages
+# vercel_update.sh - Termux-ready update + deploy + verify + open live pages in Chrome
 
 echo ">>> Checking required files..."
 FILES=("index.html" "dashboard.html" "vision_mission.html" "contact.html")
@@ -30,14 +30,17 @@ for page in "${PAGES[@]}"; do
   STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$SITE_URL/$page")
   if [ "$STATUS" -eq 200 ]; then
     echo "✅ $page is live!"
-    echo "   Opening $page..."
-    termux-open "$SITE_URL/$page"
   elif [ "$STATUS" -eq 401 ] || [ "$STATUS" -eq 403 ]; then
     echo "⚠️ $page is private or access is restricted (HTTP $STATUS)."
   else
     echo "❌ $page returned HTTP $STATUS"
   fi
 done
+
+# Open homepage and dashboard in Chrome
+echo ">>> Opening homepage and dashboard in Chrome..."
+termux-open "$SITE_URL/index.html"
+termux-open "$SITE_URL/dashboard.html"
 
 echo ">>> Deployment, verification, and opening complete!"
 
