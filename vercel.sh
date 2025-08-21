@@ -1,6 +1,6 @@
 
 #!/bin/bash
-# vercel_update.sh - Termux-ready update + redeploy + verify + open live pages
+# vercel_update.sh - Termux-ready update + deploy + verify + open live pages
 
 echo ">>> Checking required files..."
 FILES=("index.html" "dashboard.html" "vision_mission.html" "contact.html")
@@ -22,7 +22,7 @@ echo ">>> Deploying to Vercel..."
 vercel --prod --confirm
 
 # Verification
-SITE_URL="https://hearthub-7vdrmr6r9-babikerosmans-projects.vercel.app"
+SITE_URL="https://hearthub-65y6dzdwe-babikerosmans-projects.vercel.app"
 PAGES=("index.html" "dashboard.html" "vision_mission.html" "contact.html")
 
 echo ">>> Verifying deployed pages..."
@@ -32,6 +32,8 @@ for page in "${PAGES[@]}"; do
     echo "✅ $page is live!"
     echo "   Opening $page..."
     termux-open "$SITE_URL/$page"
+  elif [ "$STATUS" -eq 401 ] || [ "$STATUS" -eq 403 ]; then
+    echo "⚠️ $page is private or access is restricted (HTTP $STATUS)."
   else
     echo "❌ $page returned HTTP $STATUS"
   fi
